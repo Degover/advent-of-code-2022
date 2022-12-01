@@ -1,4 +1,4 @@
-pub fn part_1(input: String) -> String {
+pub fn solve(input: String) -> String {
     let mut curr_calories = 0;
     let mut most_calories = 0;
 
