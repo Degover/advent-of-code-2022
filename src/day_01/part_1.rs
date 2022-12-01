@@ -1,24 +1,26 @@
+use super::common::read_total_calories_per_elve;
+
 pub fn solve(input: String) -> String {
-    let mut curr_calories = 0;
-    let mut most_calories = 0;
+    let calories = read_total_calories_per_elve(input);
 
-    for line in input.lines() {
-        if line == "" {
-            if curr_calories > most_calories {
-                most_calories = curr_calories;
-            }
+    return calories[0].to_string();
+}
 
-            curr_calories = 0;
-            continue;
-        }
+#[cfg(test)]
+mod test {
+    use super::*;
 
-        let calory: i32 = line.parse().expect("Expected a number");
-        curr_calories += calory;
+    #[test]
+    fn solve_should_be_correct() {
+        let example = [
+            "1000", "2000", "3000", "", "4000", "", "5000", "6000", "", "7000", "8000", "9000", "",
+            "10000",
+        ]
+        .join("\n");
+
+        let result = solve(example);
+
+        let expected = "24000";
+        assert_eq!(result, expected);
     }
-
-    if curr_calories > most_calories {
-        most_calories = curr_calories;
-    }
-
-    return most_calories.to_string();
 }
