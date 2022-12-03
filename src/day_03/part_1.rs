@@ -1,5 +1,21 @@
-pub fn solve(_input: String) -> String {
-    return "Not solved yet!".to_string();
+use super::common::get_letter_priority;
+
+pub fn solve(input: String) -> String {
+    let mut total = 0;
+    for line in input.lines() {
+        let rucksack = line.split_at(line.len() / 2);
+        let repeating_item = rucksack
+            .0
+            .chars()
+            .filter(|c| rucksack.1.chars().find(|inn_c| inn_c == c).is_some())
+            .next()
+            .expect("Expected a repeating letter.");
+
+        let priority = get_letter_priority(&repeating_item).expect("Expected a valid priority");
+        total += priority + 1;
+    }
+
+    return total.to_string();
 }
 
 #[cfg(test)]
