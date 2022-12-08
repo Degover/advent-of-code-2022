@@ -3,6 +3,7 @@ mod day_02;
 mod day_03;
 mod day_05;
 mod day_06;
+mod day_08;
 
 pub type SolutionFn = fn(String) -> String;
 
@@ -17,6 +18,7 @@ pub fn get_solution(day: &u8) -> (SolutionFn, SolutionFn) {
         3 => (day_03::part_1::solve, day_03::part_2::solve),
         5 => (day_05::part_1::solve, day_05::part_2::solve),
         6 => (day_06::part_1::solve, day_06::part_2::solve),
+        8 => (day_08::part_1::solve, day_08::part_2::solve),
         _ => {
             println!("This day has no solution");
             (not_implemented, not_implemented)
