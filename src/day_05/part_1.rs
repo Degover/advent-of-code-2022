@@ -1,9 +1,9 @@
-use crate::day_05::common::parse_crate_formation;
+use crate::{day_05::common::parse_crate_formation, EMPTY_LINE};
 
 use super::common::parse_command;
 
 pub fn solve(input: String) -> String {
-    let mut splitted = input.split("\r\n\r\n");
+    let mut splitted = input.split(EMPTY_LINE);
     let mut piles = parse_crate_formation(
         splitted
             .nth(0)
@@ -36,6 +36,7 @@ pub fn solve(input: String) -> String {
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::NEW_LINE;
 
     #[test]
     fn solve_should_be_correct() {
@@ -50,7 +51,7 @@ mod test {
             "move 2 from 2 to 1",
             "move 1 from 1 to 2",
         ]
-        .join("\r\n");
+        .join(NEW_LINE);
 
         let result = solve(example);
 

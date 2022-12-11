@@ -69,10 +69,11 @@ pub fn solve(input: String) -> String {
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::NEW_LINE;
 
     #[test]
     fn solve_should_be_correct() {
-        let example = ["A Y", "B X", "C Z"].join("\n");
+        let example = ["A Y", "B X", "C Z"].join(NEW_LINE);
 
         let result = solve(example);
 

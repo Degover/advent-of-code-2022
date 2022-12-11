@@ -39,10 +39,11 @@ pub fn solve(input: String) -> String {
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::NEW_LINE;
 
     #[test]
     fn solve_should_be_correct() {
-        let example = ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"].join("\n");
+        let example = ["R 4", "U 4", "L 3", "D 1", "R 4", "D 1", "L 5", "R 2"].join(NEW_LINE);
 
         let result = solve(example);
 

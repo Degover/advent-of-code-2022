@@ -28,6 +28,7 @@ pub fn solve(input: String) -> String {
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::NEW_LINE;
 
     #[test]
     fn solve_should_be_correct() {
@@ -39,7 +40,7 @@ mod test {
             "ttgJtRGJQctTZtZT",
             "CrZsJsPPZsGzwwsLwLmpwMDw",
         ]
-        .join("\n");
+        .join(NEW_LINE);
 
         let result = solve(example);
 

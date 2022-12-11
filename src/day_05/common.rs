@@ -48,10 +48,11 @@ pub fn parse_command(input: &str) -> (usize, usize, usize) {
 #[cfg(test)]
 mod test {
     use super::*;
+    use crate::NEW_LINE;
 
     #[test]
     fn parse_crate_formation_should_be_correct() {
-        let example = ["    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 "].join("\n");
+        let example = ["    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 "].join(NEW_LINE);
 
         let result = parse_crate_formation(&example);
 

@@ -27,3 +27,6 @@ pub fn get_solution(day: &u8) -> (SolutionFn, SolutionFn) {
         }
     }
 }
+
+pub const NEW_LINE: &str = "\n";
+pub const EMPTY_LINE: &str = "\n\n";

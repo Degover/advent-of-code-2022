@@ -1,9 +1,7 @@
 use std::fs;
 use std::io;
 
-use advent_of_code_2022::get_solution;
-
-pub mod day_01;
+use advent_of_code_2022::{get_solution, NEW_LINE};
 
 fn main() {
     println!("Choose a day");
@@ -40,5 +38,7 @@ fn run_solution(input: String, day: &u8, part: &u8) -> String {
 fn read_input(day: &u8) -> String {
     let file_path = format!("inputs/day_{day}.txt");
 
-    return fs::read_to_string(file_path).expect("Should have been able to read the file");
+    return fs::read_to_string(file_path)
+        .expect("Should have been able to read the file")
+        .replace("\r\n", NEW_LINE);
 }
