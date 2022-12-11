@@ -44,6 +44,30 @@ impl Monkey {
     }
 }
 
+pub fn find_lcm(n1: u64, n2: u64) -> u64 {
+    let mut rem: u64;
+    let mut x: u64;
+    let mut y: u64;
+
+    if n1 > n2 {
+        x = n1;
+        y = n2;
+    } else {
+        x = n2;
+        y = n1;
+    }
+
+    rem = x % y;
+
+    while rem != 0 {
+        x = y;
+        y = rem;
+        rem = x % y;
+    }
+
+    return n1 * n2 / y;
+}
+
 fn parse_items(items_line: &str) -> Vec<u64> {
     return items_line
         .replace("Starting items:", "")

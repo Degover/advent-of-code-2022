@@ -1,4 +1,4 @@
-use super::commons::Monkey;
+use super::commons::{find_lcm, Monkey};
 use crate::EMPTY_LINE;
 use std::collections::HashMap;
 
@@ -7,6 +7,10 @@ pub fn solve(input: String) -> String {
         .split(EMPTY_LINE)
         .map(|inp| Monkey::parse(inp))
         .collect();
+
+    let mmc = monkeys
+        .iter()
+        .fold(1, |lcm, x| find_lcm(lcm, x.divisible_num));
 
     let mut counter: HashMap<usize, usize> = HashMap::new();
     for _ in 0..10_000 {
@@ -19,7 +23,7 @@ pub fn solve(input: String) -> String {
 
             for _ in 0..monkey.items.len() {
                 let item = monkey.items.remove(0);
-                let result = (monkey.operate)(&item);
+                let result = (monkey.operate)(&item) % mmc;
                 if result % monkey.divisible_num == 0 {
                     monkeys[monkey.on_true_target].items.push(result);
                 } else {
