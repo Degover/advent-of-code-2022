@@ -1,7 +1,7 @@
 use super::commons::{Direction, Position, Rope};
 
 pub fn solve(input: String) -> String {
-    let mut rope = Rope::new();
+    let mut rope = Rope::new(1);
     let mut previous_positions = vec![Position::new()];
 
     for line in input.lines() {
@@ -26,8 +26,9 @@ pub fn solve(input: String) -> String {
         for _ in 0..quantity {
             rope.move_head(&direction);
 
-            if !previous_positions.iter().any(|pos| rope.tail.is_equal(pos)) {
-                previous_positions.push(rope.tail.clone())
+            let tail = rope.get_tail_position();
+            if !previous_positions.iter().any(|pos| tail.is_equal(pos)) {
+                previous_positions.push(tail.clone())
             }
         }
     }
